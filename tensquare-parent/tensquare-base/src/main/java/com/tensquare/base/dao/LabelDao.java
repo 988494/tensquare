@@ -9,4 +9,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  * @官网 www.weifuwukt.com
  */
 public interface LabelDao extends JpaRepository<com.tensquare.base.pojo.Label,String>, JpaSpecificationExecutor<com.tensquare.base.pojo.Label> {
+
 }
