@@ -1,0 +1,20 @@
+server: 
+  port: 9006
+spring: 
+  application:  
+    name: tensquare-spit #指定服务名
+  data:
+    mongodb:
+      host: 120.79.93.16
+      database: spitdb
+  redis:
+    host: 120.79.93.16
+    port: 6379
+#  datasource:
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://120.79.93.16:3306/tensquare_qa?characterEncoding=utf-8&useSSL=false
+#    username: root
+#    password: admin
+#  jpa:
+#    database: MySQL
+#    show-sql: true
