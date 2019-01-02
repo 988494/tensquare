@@ -35,4 +35,13 @@ eureka:</br>
  * 方法三</br>
  * feign.hystrix.enabled: false</br>
  * 该配置，用于索性禁用feign的hystrix。该做法除非一些特殊场景，不推荐使用。</br>
- */</br>
+ </br>
+ ## 问题:springboot jpa使用注意事项
+ 1、springboot使用jpa，需要在service层添加@@Transactional注解（就是事务）</br>
+ 否则会出现异常：org.springframework.dao.InvalidDataAccessApiUsageException:</br>
+ 2、dao层修改、删除、更新需要如果使用sql语句，则需要在方法上添加@Modifying注解</br>
+ 如：</br>
+ 	@Modifying</br>
+	@Query(value = "UPDATE tb_user SET fanscount=fanscount+? WHERE id=?",nativeQuery = true)</br>
+    void updateFanscount(Integer x, String friendid);</br>
+ 
