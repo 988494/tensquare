@@ -37,8 +37,9 @@ url = "127.0.0.1:8080"表示访问url，如fandById这个方法被调用的时�
  该配置，用于索性禁用feign的hystrix。该做法除非一些特殊场景，不推荐使用。</br>
  </br>
  ## 问题:Feign技巧
- 在使用feign时候，如果feign接口写在消费方，则@EnableFeignClients注解的basePackages熟悉可以不用写，如果feign接口放在生产者这边，</br>
+ 1、在使用feign时候，如果feign接口写在消费方，则@EnableFeignClients注解的basePackages熟悉可以不用写，如果feign接口放在生产者这边，</br>
  则@EnableFeignClients(basePackages = "com.tensquare.friend")这个注解一定要有basePackages，否则feign接口动态代理生成的类无法注入到容器中</br>
+ 2、我个人思考了个问题，最好把feign接口写在生产者这边，因为随着服务的增多，也会有多个调用同一个feign接口方法，如果写在生产者这边，</br>那么就会少写代码，如果写在消费者那边，则每个消费者都要写相同的代码</br>
  ##  问题:springboot jpa使用注意事项
  1、springboot使用jpa，需要在service层添加@@Transactional注解（就是事务）</br>
  否则会出现异常：org.springframework.dao.InvalidDataAccessApiUsageException:</br>
