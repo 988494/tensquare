@@ -1,16 +1,17 @@
-package com.tensquare.search.qa.controller;
+package com.tensquare.qa.controller;
 import java.util.Map;
 
-import com.tensquare.search.qa.pojo.Problem;
-import com.tensquare.search.qa.service.ProblemService;
+import com.tensquare.qa.pojo.Problem;
+import com.tensquare.qa.service.ProblemService;
+import com.tensquare.qa.client.BaseClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import com.tensquare.common.entity.PageResult;
+import com.tensquare.common.entity.Result;
+import com.tensquare.common.entity.StatusCode;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -29,6 +30,15 @@ public class ProblemController {
 
 	@Autowired
 	private HttpServletRequest request;
+
+	@Autowired
+    private BaseClient baseClient;
+
+	@GetMapping("/label/{labelId}")
+	public Result fandById(@PathVariable("labelId") String labelId){
+		Result result = baseClient.fandById(labelId);
+		return result;
+	}
 
 	//最新问答列表
 	@GetMapping("/newlist/{label}/{page}/{size}")

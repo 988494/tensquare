@@ -1,6 +1,6 @@
-package com.tensquare.search.qa.config;
+package com.tensquare.user.config;
 
-import com.tensquare.search.qa.interceptor.JwtInterceptor;
+import com.tensquare.user.interceptor.UserJwtInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -14,9 +14,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  */
 @Component
 @Configuration
-public class InterceptorConfig extends WebMvcConfigurationSupport {
+public class UserInterceptorConfig extends WebMvcConfigurationSupport {
     @Autowired
-    private JwtInterceptor jwtInterceptor;
+    private UserJwtInterceptor jwtInterceptor;
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(jwtInterceptor).addPathPatterns("/**")

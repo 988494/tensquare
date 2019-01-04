@@ -1,6 +1,6 @@
-package com.tensquare.search.qa.dao;
+package com.tensquare.qa.dao;
 
-import com.tensquare.search.qa.pojo.Problem;
+import com.tensquare.qa.pojo.Problem;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
