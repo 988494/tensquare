@@ -1,4 +1,4 @@
-package com.tensquare.search.recruit.service;
+package com.tensquare.recruit.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +15,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import util.IdWorker;
+import com.tensquare.common.util.IdWorker;
 
-import com.tensquare.search.recruit.dao.RecruitDao;
-import com.tensquare.search.recruit.pojo.Recruit;
+import com.tensquare.recruit.dao.RecruitDao;
+import com.tensquare.recruit.pojo.Recruit;
 
 /**
  * 服务层

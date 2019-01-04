@@ -1,17 +1,17 @@
-package com.tensquare.search.recruit.controller;
+package com.tensquare.recruit.controller;
 import java.util.List;
 import java.util.Map;
 
-import com.tensquare.search.recruit.service.RecruitService;
+import com.tensquare.recruit.service.RecruitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import com.tensquare.search.recruit.pojo.Recruit;
+import com.tensquare.recruit.pojo.Recruit;
 
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import com.tensquare.common.entity.PageResult;
+import com.tensquare.common.entity.Result;
+import com.tensquare.common.entity.StatusCode;
 /**
  * 控制器层
  * @author Administrator

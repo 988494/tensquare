@@ -1,8 +1,8 @@
-package com.tensquare.search.recruit;
+package com.tensquare.recruit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import util.IdWorker;
+import com.tensquare.common.util.IdWorker;
 @SpringBootApplication
 public class RecruitApplication {
 
