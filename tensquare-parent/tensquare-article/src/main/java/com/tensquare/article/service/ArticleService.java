@@ -1,4 +1,4 @@
-package com.tensquare.search.article.service;
+package com.tensquare.article.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +18,10 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-import util.IdWorker;
+import com.tensquare.common.util.IdWorker;
 
-import com.tensquare.search.article.dao.ArticleDao;
-import com.tensquare.search.article.pojo.Article;
+import com.tensquare.article.dao.ArticleDao;
+import com.tensquare.article.pojo.Article;
 
 /**
  * 服务层

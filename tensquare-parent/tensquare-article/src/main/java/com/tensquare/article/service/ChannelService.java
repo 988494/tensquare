@@ -1,4 +1,4 @@
-package com.tensquare.search.article.service;
+package com.tensquare.article.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +15,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import util.IdWorker;
+import com.tensquare.common.util.IdWorker;
 
-import com.tensquare.search.article.dao.ColumnDao;
-import com.tensquare.search.article.pojo.Column;
+import com.tensquare.article.dao.ChannelDao;
+import com.tensquare.article.pojo.Channel;
 
 /**
  * 服务层
@@ -27,10 +27,10 @@ import com.tensquare.search.article.pojo.Column;
  *
  */
 @Service
-public class ColumnService {
+public class ChannelService {
 
 	@Autowired
-	private ColumnDao columnDao;
+	private ChannelDao channelDao;
 	
 	@Autowired
 	private IdWorker idWorker;
@@ -39,8 +39,8 @@ public class ColumnService {
 	 * 查询全部列表
 	 * @return
 	 */
-	public List<Column> findAll() {
-		return columnDao.findAll();
+	public List<Channel> findAll() {
+		return channelDao.findAll();
 	}
 
 	
@@ -51,10 +51,10 @@ public class ColumnService {
 	 * @param size
 	 * @return
 	 */
-	public Page<Column> findSearch(Map whereMap, int page, int size) {
-		Specification<Column> specification = createSpecification(whereMap);
+	public Page<Channel> findSearch(Map whereMap, int page, int size) {
+		Specification<Channel> specification = createSpecification(whereMap);
 		PageRequest pageRequest =  PageRequest.of(page-1, size);
-		return columnDao.findAll(specification, pageRequest);
+		return channelDao.findAll(specification, pageRequest);
 	}
 
 	
@@ -63,9 +63,9 @@ public class ColumnService {
 	 * @param whereMap
 	 * @return
 	 */
-	public List<Column> findSearch(Map whereMap) {
-		Specification<Column> specification = createSpecification(whereMap);
-		return columnDao.findAll(specification);
+	public List<Channel> findSearch(Map whereMap) {
+		Specification<Channel> specification = createSpecification(whereMap);
+		return channelDao.findAll(specification);
 	}
 
 	/**
@@ -73,25 +73,25 @@ public class ColumnService {
 	 * @param id
 	 * @return
 	 */
-	public Column findById(String id) {
-		return columnDao.findById(id).get();
+	public Channel findById(String id) {
+		return channelDao.findById(id).get();
 	}
 
 	/**
 	 * 增加
-	 * @param column
+	 * @param channel
 	 */
-	public void add(Column column) {
-		column.setId( idWorker.nextId()+"" );
-		columnDao.save(column);
+	public void add(Channel channel) {
+		channel.setId( idWorker.nextId()+"" );
+		channelDao.save(channel);
 	}
 
 	/**
 	 * 修改
-	 * @param column
+	 * @param channel
 	 */
-	public void update(Column column) {
-		columnDao.save(column);
+	public void update(Channel channel) {
+		channelDao.save(channel);
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class ColumnService {
 	 * @param id
 	 */
 	public void deleteById(String id) {
-		columnDao.deleteById(id);
+		channelDao.deleteById(id);
 	}
 
 	/**
@@ -107,28 +107,20 @@ public class ColumnService {
 	 * @param searchMap
 	 * @return
 	 */
-	private Specification<Column> createSpecification(Map searchMap) {
+	private Specification<Channel> createSpecification(Map searchMap) {
 
-		return new Specification<Column>() {
+		return new Specification<Channel>() {
 
 			@Override
-			public Predicate toPredicate(Root<Column> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+			public Predicate toPredicate(Root<Channel> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
 				List<Predicate> predicateList = new ArrayList<Predicate>();
                 // ID
                 if (searchMap.get("id")!=null && !"".equals(searchMap.get("id"))) {
                 	predicateList.add(cb.like(root.get("id").as(String.class), "%"+(String)searchMap.get("id")+"%"));
                 }
-                // 专栏名称
+                // 频道名称
                 if (searchMap.get("name")!=null && !"".equals(searchMap.get("name"))) {
                 	predicateList.add(cb.like(root.get("name").as(String.class), "%"+(String)searchMap.get("name")+"%"));
-                }
-                // 专栏简介
-                if (searchMap.get("summary")!=null && !"".equals(searchMap.get("summary"))) {
-                	predicateList.add(cb.like(root.get("summary").as(String.class), "%"+(String)searchMap.get("summary")+"%"));
-                }
-                // 用户ID
-                if (searchMap.get("userid")!=null && !"".equals(searchMap.get("userid"))) {
-                	predicateList.add(cb.like(root.get("userid").as(String.class), "%"+(String)searchMap.get("userid")+"%"));
                 }
                 // 状态
                 if (searchMap.get("state")!=null && !"".equals(searchMap.get("state"))) {

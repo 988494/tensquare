@@ -1,4 +1,4 @@
-package com.tensquare.search.article.pojo;
+package com.tensquare.article.pojo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

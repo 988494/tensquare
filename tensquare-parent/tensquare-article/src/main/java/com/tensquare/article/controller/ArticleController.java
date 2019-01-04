@@ -1,16 +1,16 @@
-package com.tensquare.search.article.controller;
+package com.tensquare.article.controller;
 import java.util.Map;
 
-import com.tensquare.search.article.service.ArticleService;
+import com.tensquare.article.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import com.tensquare.search.article.pojo.Article;
+import com.tensquare.article.pojo.Article;
 
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import com.tensquare.common.entity.PageResult;
+import com.tensquare.common.entity.Result;
+import com.tensquare.common.entity.StatusCode;
 /**
  * 控制器层
  * @author Administrator
