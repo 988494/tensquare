@@ -1,4 +1,7 @@
 # tensquare
+## 版本使用
+正式版：</br>
+springboot----2.0.7.RELEASE    springcloud---Finchley.SR2</br>
 ## 问题：
 为什么tensquare中Label类要实现序列化，而tensquare_common模块中的类不需要实现序列化？</br>
 tensquare_common模块中的类中的类要嘛说返回给客户端的，或者本模块用，而tensquare中Label类中的类，未来要与各个模块之间调用，所以需要实现序列化
@@ -61,5 +64,9 @@ zuul:</br>
 ### 第二个解决方法：</br>
 zuul.routes.<routeName>.sensitive-headers=</br>
 zuul.routes.<routeName>.custom-sensitive-headers=true</br>
-		
- 
+## 问题:config+bus+rabbitmq实现配置中心自动刷新功能
+讨论Spring Cloud的集成。就像Spring Boot需要基础代的Spring Framework一样，Spring Cloud需要基本生成Spring Boot，</br>你不能只考虑升级Spring Boot而不考虑Spring Cloud。</br>
+##### 问题一：springboot 2.1.0.RELEASE 与springcloud Finchley.SR2是有问题的
+比如:Spring Cloud Config Server，Spring Cloud Bus，RabbitMQ和Git进行可刷新配置这里就是会报错的，如java.lang.IllegalStateException:</br> Error processing condition on org.springframework.cloud.stream.config.BindingServiceConfiguration.bindingService</br>
+springboot与Spring cloud版本选不合适，导致config+bus+rabbitmq实现配置中心自动刷新出现问题，下面是网上有人遇到类似的问题</br>
+问题解决地址连接：https://github.com/spring-projects/spring-boot/issues/15088</br>
