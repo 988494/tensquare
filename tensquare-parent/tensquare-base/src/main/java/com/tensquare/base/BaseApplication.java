@@ -1,9 +1,10 @@
-package com.tensquare.search.base;
+package com.tensquare.base;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
-import util.IdWorker;
+import com.tensquare.common.util.IdWorker;
 
 /**
  * @author 杨郑兴
@@ -11,13 +12,15 @@ import util.IdWorker;
  * @官网 www.weifuwukt.com
  */
 @SpringBootApplication
+@EnableEurekaClient
 public class BaseApplication {
     public static void main(String[] args) {
+
         SpringApplication.run(BaseApplication.class,args);
     }
 
     @Bean(value = "idWorker")
     public IdWorker idWorker(){
-        return new IdWorker();
+        return new IdWorker(1,1);
     }
 }

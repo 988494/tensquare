@@ -5,6 +5,7 @@
 # IntelliJ project files
 .mvn
 target
+target1
 mvnw
 mvnw.cmd
 .idea

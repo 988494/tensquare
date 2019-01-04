@@ -1,6 +1,6 @@
-package com.tensquare.search.base.common;
+package com.tensquare.base.common;
 
-import com.tensquare.search.base.pojo.Label;
+import com.tensquare.base.pojo.Label;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
 

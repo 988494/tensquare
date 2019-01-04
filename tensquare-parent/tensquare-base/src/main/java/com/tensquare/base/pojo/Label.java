@@ -1,4 +1,4 @@
-package com.tensquare.search.base.pojo;
+package com.tensquare.base.pojo;
 
 import lombok.Data;
 

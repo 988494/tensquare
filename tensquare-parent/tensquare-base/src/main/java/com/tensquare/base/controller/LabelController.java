@@ -1,14 +1,16 @@
-package com.tensquare.search.base.controller;
+package com.tensquare.base.controller;
 
-import com.tensquare.search.base.pojo.Label;
-import com.tensquare.search.base.service.LabelService;
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import com.tensquare.base.pojo.Label;
+import com.tensquare.base.service.LabelService;
+import com.tensquare.common.entity.PageResult;
+import com.tensquare.common.entity.Result;
+import com.tensquare.common.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -23,10 +25,14 @@ public class LabelController {
 
     @Autowired
     private LabelService labelService;
+    @Autowired
+    private HttpServletRequest request;
 
     @GetMapping
     public Result fandAll(){
 //        int i = 1/0;
+        String authorization = request.getHeader("Authorization");
+        System.out.println(authorization);
         List<Label> labelList = labelService.findAll();
         return new Result(true, StatusCode.OK,"查询成功",labelList);
     }

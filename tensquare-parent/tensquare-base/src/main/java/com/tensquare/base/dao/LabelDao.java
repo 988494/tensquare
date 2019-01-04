@@ -1,6 +1,6 @@
-package com.tensquare.search.base.dao;
+package com.tensquare.base.dao;
 
-import com.tensquare.search.base.pojo.Label;
+import com.tensquare.base.pojo.Label;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

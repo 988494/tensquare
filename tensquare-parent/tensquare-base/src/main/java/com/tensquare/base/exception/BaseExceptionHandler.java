@@ -1,7 +1,7 @@
-package com.tensquare.search.base.exception;
+package com.tensquare.base.exception;
 
-import entity.Result;
-import entity.StatusCode;
+import com.tensquare.common.entity.Result;
+import com.tensquare.common.entity.StatusCode;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
