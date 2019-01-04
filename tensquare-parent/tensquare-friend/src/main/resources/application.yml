@@ -1,0 +1,35 @@
+server:
+  port: 9010
+spring:
+  application:
+    name: tensquare-friend #指定服务名
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.79.93.16:3306/tensquare_friend?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: admin
+  jpa:
+    database: MySQL
+    show-sql: true
+  redis:
+    host: 120.79.93.16
+  main:
+    allow-bean-definition-overriding: true
+jwt:
+  config:
+    key: yangzhengxing
+    ttl: 3600000
+eureka:
+  instance:
+    #    ip-address: 表示鼠：鼠标放到微服务实例名上，右下角出现的ip地址是什么，这里写什么哪里就显示什么
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true #模块之间可以跨域访问
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+info:
+  info: 交友微服务
+feign:
+  httpclient:
+    connection-timer-repeat: 300000
+    connection-timeout: 300000
