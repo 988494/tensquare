@@ -18,6 +18,11 @@
         <module>tensquare-search</module>
         <module>tensquare-user</module>
         <module>tensquare-sms</module>
+        <module>tensquare-eureka</module>
+        <module>tensquare-friend</module>
+        <module>tensquare-manager</module>
+        <module>tensquare-web</module>
+        <module>tensquare-config</module>
     </modules>
     <packaging>pom</packaging>
     <name>tensquare-parent</name>
@@ -25,8 +30,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.1.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.0.7.RELEASE</version>
+        <relativePath/>
     </parent>
 
     <properties>
@@ -47,32 +52,51 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.47</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
+    <!--<pluginRepositories>-->
+        <!--<pluginRepository>-->
+            <!--<id>spring-snapshots</id>-->
+            <!--<name>Spring Snapshots</name>-->
+            <!--<url>https://repo.spring.io/snapshot</url>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+            <!--</snapshots>-->
+        <!--</pluginRepository>-->
+        <!--<pluginRepository>-->
+            <!--<id>spring-milestones</id>-->
+            <!--<name>Spring Milestones</name>-->
+            <!--<url>https://repo.spring.io/milestone</url>-->
+            <!--<snapshots>-->
+                <!--<enabled>false</enabled>-->
+            <!--</snapshots>-->
+        <!--</pluginRepository>-->
+    <!--</pluginRepositories>-->
     <build>
+        <finalName>tensquare-parent</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <delimiters>
+                        <delimit>$</delimit>
+                    </delimiters>
+                </configuration>
             </plugin>
         </plugins>
     </build>
