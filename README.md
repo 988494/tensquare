@@ -48,4 +48,18 @@ url = "127.0.0.1:8080"表示访问url，如fandById这个方法被调用的时�
  	@Modifying</br>
 	@Query(value = "UPDATE tb_user SET fanscount=fanscount+? WHERE id=?",nativeQuery = true)</br>
     void updateFanscount(Integer x, String friendid);</br>
+ ## 问题:zuul网关是非常坑的（这里springcloud Finchley.SR2,springboot 2.0.7.RELEASE其他版本或许不是这样，根据版本查看源代码分析即可）
+ 主要的问题是：Spring Cloud系列之客户端请求带“Authorization”请求头,经过zuul转发后丢失了？</br>
+ 解决问题参考连接：http://www.cnblogs.com/liaojie970/p/9158991.html</br>
+ zuul进行转发的时候，发现默认过滤掉的请求头有：authorization、set-cookie、cookie、host、connection、content-length、</br>content-encoding、server、transfer-encoding、x-application-context</br>
+ 由于我这个项目中使用了jwt,其中恰巧header中传了名为Authorization的参数，所以使用zuul网关到其他微服务时候，</br>在其他微服务中Authorization字段将被丢失，通过分析源码可知，zuulProperties这个配置类中的，</br>
+  private Set<String> sensitiveHeaders = new LinkedHashSet(Arrays.asList("Cookie", "Set-Cookie", "Authorization"));</br>这个字段就是包换忽略的字段，</br>
+### 第一个解决办法：可以在application.yml配置文件中把sensitiveHeaders默认给覆盖掉即可，这里项目中设置为空
+zuul:</br>
+ sensitive-headers:  </br>
+但是如果开启	zuul retry上面的解决方法就要慎用了</br>
+### 第二个解决方法：</br>
+zuul.routes.<routeName>.sensitive-headers=</br>
+zuul.routes.<routeName>.custom-sensitive-headers=true</br>
+		
  
