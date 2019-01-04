@@ -1,11 +1,10 @@
-package util;
+package com.tensquare.common.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -61,10 +60,11 @@ public class JwtUtil {
      * @return
      */
     public Claims parseJWT(String jwtStr){
-        return  Jwts.parser()
+        Claims claims = Jwts.parser()
                 .setSigningKey(key)
                 .parseClaimsJws(jwtStr)
                 .getBody();
+        return claims;
     }
 
 }
