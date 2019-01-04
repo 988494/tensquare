@@ -1,10 +1,10 @@
-package com.tensquare.search.spit.controller;
+package com.tensquare.spit.controller;
 
-import com.tensquare.search.spit.service.SpitService;
-import com.tensquare.search.spit.pojo.Spit;
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import com.tensquare.spit.service.SpitService;
+import com.tensquare.spit.pojo.Spit;
+import com.tensquare.common.entity.PageResult;
+import com.tensquare.common.entity.Result;
+import com.tensquare.common.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.redis.core.RedisTemplate;

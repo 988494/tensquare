@@ -1,4 +1,4 @@
-package com.tensquare.search.spit.pojo;
+package com.tensquare.spit.pojo;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
