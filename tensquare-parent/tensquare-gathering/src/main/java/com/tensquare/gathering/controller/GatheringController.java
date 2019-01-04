@@ -1,7 +1,7 @@
-package com.tensquare.search.gathering.controller;
+package com.tensquare.gathering.controller;
 import java.util.Map;
 
-import com.tensquare.search.gathering.service.GatheringService;
+import com.tensquare.gathering.service.GatheringService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tensquare.search.gathering.pojo.Gathering;
+import com.tensquare.gathering.pojo.Gathering;
 
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import com.tensquare.common.entity.PageResult;
+import com.tensquare.common.entity.Result;
+import com.tensquare.common.entity.StatusCode;
 /**
  * 控制器层
  * @author Administrator

@@ -1,4 +1,4 @@
-package com.tensquare.search.gathering.service;
+package com.tensquare.gathering.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +17,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import util.IdWorker;
+import com.tensquare.common.util.IdWorker;
 
-import com.tensquare.search.gathering.dao.GatheringDao;
-import com.tensquare.search.gathering.pojo.Gathering;
+import com.tensquare.gathering.dao.GatheringDao;
+import com.tensquare.gathering.pojo.Gathering;
 
 /**
  * 服务层
