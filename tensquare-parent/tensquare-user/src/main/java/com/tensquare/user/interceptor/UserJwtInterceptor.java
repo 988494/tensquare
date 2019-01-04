@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-import util.JwtUtil;
+import com.tensquare.common.util.JwtUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * @官网 www.weifuwukt.com
  */
 @Component
-public class JwtInterceptor implements HandlerInterceptor {
+public class UserJwtInterceptor implements HandlerInterceptor {
 
     @Autowired
     private JwtUtil jwtUtil;

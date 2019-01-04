@@ -1,23 +1,20 @@
 package com.tensquare.user.controller;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import io.jsonwebtoken.Jwt;
+import com.tensquare.user.pojo.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import com.tensquare.user.pojo.User;
 import com.tensquare.user.service.UserService;
 
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
-import util.JwtUtil;
+import com.tensquare.common.entity.PageResult;
+import com.tensquare.common.entity.Result;
+import com.tensquare.common.entity.StatusCode;
+import com.tensquare.common.util.JwtUtil;
 
 /**
  * 控制器层
@@ -36,6 +33,11 @@ public class UserController {
 	@Autowired
 	private JwtUtil jwtUtil;
 
+	//更新好友粉丝数和用户关注数
+	@PutMapping("/{userid}/{friendid}/{x}")
+	public void updateFanscountAndFollowcount(@PathVariable("userid") String userid,@PathVariable("friendid") String friendid,@PathVariable("x") Integer x){
+		userService.updateFanscountAndFollowcount(userid,friendid,x);
+	}
 
 	//登陆
 	@PostMapping("/login")
@@ -44,7 +46,7 @@ public class UserController {
 		if(userLogin == null){
 			return new Result(false,StatusCode.LOGIN_EROR,"用户登陆失败");
 		}
-		String token = jwtUtil.createJWT(user.getId(), user.getPassword(), "user");
+		String token = jwtUtil.createJWT(userLogin.getId(), userLogin.getPassword(), "user");
 		HashMap<Object, Object> map = new HashMap<>();
 		map.put("token",token);
 		map.put("roles","user");

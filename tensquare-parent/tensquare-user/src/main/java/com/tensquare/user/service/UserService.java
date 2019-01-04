@@ -9,8 +9,8 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.servlet.http.HttpServletRequest;
 
-import com.sun.org.apache.regexp.internal.RE;
-import io.jsonwebtoken.Claims;
+import com.tensquare.user.dao.UserDao;
+import com.tensquare.user.pojo.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -23,11 +23,10 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import util.IdWorker;
+import org.springframework.transaction.annotation.Transactional;
+import com.tensquare.common.util.IdWorker;
 
-import com.tensquare.user.dao.UserDao;
-import com.tensquare.user.pojo.User;
-import util.JwtUtil;
+import com.tensquare.common.util.JwtUtil;
 
 /**
  * 服务层
@@ -37,6 +36,7 @@ import util.JwtUtil;
  */
 @Service
 @Slf4j
+@Transactional
 public class UserService {
 
 	@Autowired
@@ -59,7 +59,6 @@ public class UserService {
 
 	@Autowired
 	private JwtUtil jwtUtil;
-
 
 	/**
 	 * 查询全部列表
@@ -229,5 +228,9 @@ public class UserService {
 		}
 		//登陆失败
 		return null;
+	}
+	public void updateFanscountAndFollowcount(String userid, String friendid, Integer x) {
+		userDao.updateFanscount(x,friendid);
+		userDao.updateFollowcount(x,userid);
 	}
 }

@@ -1,6 +1,5 @@
 package com.tensquare.user.controller;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import com.tensquare.user.pojo.Admin;
 import com.tensquare.user.service.AdminService;
 
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
-import util.JwtUtil;
+import com.tensquare.common.entity.PageResult;
+import com.tensquare.common.entity.Result;
+import com.tensquare.common.entity.StatusCode;
+import com.tensquare.common.util.JwtUtil;
 
 /**
  * 控制器层

@@ -15,7 +15,19 @@ spring:
     host: 120.79.93.16
   rabbitmq:
     host: 120.79.93.16
+  main:
+    allow-bean-definition-overriding: true
 jwt:
   config:
     key: yangzhengxing
     ttl: 3600000
+eureka:
+  instance:
+    #    ip-address: 表示鼠：鼠标放到微服务实例名上，右下角出现的ip地址是什么，这里写什么哪里就显示什么
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true #模块之间可以跨域访问
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+info:
+  info: 用户微服务
