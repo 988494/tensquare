@@ -57,16 +57,16 @@ url = "127.0.0.1:8080"表示访问url，如fandById这个方法被调用的时�
  zuul进行转发的时候，发现默认过滤掉的请求头有：authorization、set-cookie、cookie、host、connection、content-length、</br>content-encoding、server、transfer-encoding、x-application-context</br>
  由于我这个项目中使用了jwt,其中恰巧header中传了名为Authorization的参数，所以使用zuul网关到其他微服务时候，</br>在其他微服务中Authorization字段将被丢失，通过分析源码可知，zuulProperties这个配置类中的，</br>
   private Set<String> sensitiveHeaders = new LinkedHashSet(Arrays.asList("Cookie", "Set-Cookie", "Authorization"));</br>这个字段就是包换忽略的字段，</br>
-### 第一个解决办法：可以在application.yml配置文件中把sensitiveHeaders默认给覆盖掉即可，这里项目中设置为空
+#### 第一个解决办法：可以在application.yml配置文件中把sensitiveHeaders默认给覆盖掉即可，这里项目中设置为空
 zuul:</br>
  sensitive-headers:  </br>
 但是如果开启	zuul retry上面的解决方法就要慎用了</br>
-### 第二个解决方法：</br>
+#### 第二个解决方法：</br>
 zuul.routes.<routeName>.sensitive-headers=</br>
 zuul.routes.<routeName>.custom-sensitive-headers=true</br>
 ## 问题:config+bus+rabbitmq实现配置中心自动刷新功能
 讨论Spring Cloud的集成。就像Spring Boot需要基础代的Spring Framework一样，Spring Cloud需要基本生成Spring Boot，</br>你不能只考虑升级Spring Boot而不考虑Spring Cloud。</br>
-##### 问题一：springboot 2.1.0.RELEASE 与springcloud Finchley.SR2是有问题的
+#### 问题一：springboot 2.1.0.RELEASE 与springcloud Finchley.SR2是有问题的
 比如:Spring Cloud Config Server，Spring Cloud Bus，RabbitMQ和Git进行可刷新配置这里就是会报错的，如java.lang.IllegalStateException:</br> Error processing condition on org.springframework.cloud.stream.config.BindingServiceConfiguration.bindingService</br>
 springboot与Spring cloud版本选不合适，导致config+bus+rabbitmq实现配置中心自动刷新出现问题，下面是网上有人遇到类似的问题</br>
 问题解决地址连接：https://github.com/spring-projects/spring-boot/issues/15088</br>
