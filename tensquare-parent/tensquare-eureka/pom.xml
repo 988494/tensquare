@@ -36,13 +36,11 @@
                     <!--依赖jdk1.8镜像，需要在docker中安装名字为：jdk1.8的jdk镜像，不需jdk8跑起来-->
                     <baseImage>jdk1.8</baseImage>
                     <!--打成jar包：jar -jar ${project.build.finalName}.jar,其中${project.build.finalName}就是<finalName>app</finalName>-->
-                    <entryPoint>["java", "-jar",
-                        "/${project.build.finalName}.jar"]</entryPoint>
+                    <entryPoint>["java", "-jar","/${project.build.finalName}.jar"]</entryPoint>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
-                            <directory>${project.build.directory}
-                            </directory>
+                            <directory>${project.build.directory}</directory>
                             <include>${project.build.finalName}.jar</include>
                         </resource>
                     </resources>
