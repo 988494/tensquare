@@ -72,5 +72,13 @@ springboot与Spring cloud版本选不合适，导致config+bus+rabbitmq实现配
 问题解决地址连接：https://github.com/spring-projects/spring-boot/issues/15088</br>
  ## 问题：Dockerfile,并构建docker私有库,通过maven自动构建镜像和部署,达到持续集成
  Failed to execute goal com.spotify:docker-maven-plugin:1.0.0:build (default-cli) on project tensquare-config: Exception caught:</br> Timeout: GET xxx/version: com.spotify.docker.client.shaded.javax.ws.rs.ProcessingException:</br> org.apache.http.conn.ConnectTimeoutException: Connect to xxx:2375 [/xxx] failed: connect timed out -> [Help 1]</br>
- 原因是因为：需要设置docker开启远程连接
- 
+ 原因是因为：需要设置docker开启远程连接</br>
+ 默认情况下，Docker守护进程Unix socket（/var/run/docker.sock）来进行本地进程通信，而不会监听任何端口，因此只能在本地使用docker客户端</br>
+ 或者使用Docker API进行操作。如果想在其他主机上操作Docker主机，就需要让Docker守护进程打开一个HTTP Socket，这样才能实现远程通信。</br>
+编辑docker的配置文件/etc/default/docker修改DOCKER_OPTS成</br>
+#同时监听本地unix socket和远程http socket（2375）</br>
+DOCKER_OPTS="-H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375"</br>
+然后重新启动docker守护进程。</br>
+sudo service docker restart</br>
+至此如果服务器启用了防火墙，只要把2375端口开放既可以在其他主机访问本docker实例了。</br>
+如果用的是比如阿里云服务器，还需要在安全配置那儿把2375组件放行
