@@ -70,7 +70,7 @@ zuul.routes.<routeName>.custom-sensitive-headers=true</br>
 比如:Spring Cloud Config Server，Spring Cloud Bus，RabbitMQ和Git进行可刷新配置这里就是会报错的，如java.lang.IllegalStateException:</br> Error processing condition on org.springframework.cloud.stream.config.BindingServiceConfiguration.bindingService</br>
 springboot与Spring cloud版本选不合适，导致config+bus+rabbitmq实现配置中心自动刷新出现问题，下面是网上有人遇到类似的问题</br>
 问题解决地址连接：https://github.com/spring-projects/spring-boot/issues/15088</br>
- ## 问题：maven插件部署问题
+ ## 问题：Dockerfile,并构建docker私有库,通过maven自动构建镜像和部署,达到持续集成
  Failed to execute goal com.spotify:docker-maven-plugin:1.0.0:build (default-cli) on project tensquare-config: Exception caught:</br> Timeout: GET xxx/version: com.spotify.docker.client.shaded.javax.ws.rs.ProcessingException:</br> org.apache.http.conn.ConnectTimeoutException: Connect to xxx:2375 [/xxx] failed: connect timed out -> [Help 1]</br>
  原因是因为：需要设置docker开启远程连接
  
