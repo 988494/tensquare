@@ -42,4 +42,38 @@
 		  <artifactId>spring-cloud-starter-openfeign</artifactId>
 	  </dependency>
   </dependencies>
+	<build>
+		<!--工程名称-->
+		<finalName>app</finalName>
+		<plugins>
+			<!--springboot插件，作为基础插件-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!--docker的maven插件，官网:https://github.com/spotify/docker‐maven‐plugin-->
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<!--镜像名称-->
+					<imageName>120.79.93.16:5000/${project.artifactId}:${project.version}</imageName>
+					<!--依赖jdk1.8镜像，需要在docker中安装名字为：jdk1.8的jdk镜像，不需jdk8跑起来-->
+					<baseImage>jdk1.8</baseImage>
+					<!--打成jar包：jar -jar ${project.build.finalName}.jar,其中${project.build.finalName}就是<finalName>app</finalName>-->
+					<entryPoint>["java", "-jar","/${project.build.finalName}.jar"]</entryPoint>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+					<!--docker主机地址-->
+					<dockerHost>http://120.79.93.16:2375</dockerHost>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

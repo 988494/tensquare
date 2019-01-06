@@ -49,7 +49,7 @@
                             <directory>${project.build.directory}</directory>
                             <include>${project.build.finalName}.jar</include>
                         </resource>
-                    </resources>
+ r                   </resources>
                     <dockerHost>http://120.79.93.16:2375</dockerHost>
                     <!--&lt;!&ndash;镜像名称&ndash;&gt;
                     <imageName>120.79.93.16:5000/${project.artifactId}:${project.version}</imageName>
