@@ -25,4 +25,51 @@
             <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
         </dependency>
     </dependencies>
+    <build>
+        <!--工程名称-->
+        <finalName>app</finalName>
+        <plugins>
+            <!--springboot插件，作为基础插件-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!--docker的maven插件，官网:https://github.com/spotify/docker‐maven‐plugin-->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <imageName>120.79.93.16:5000/${project.artifactId}:${project.version}</imageName>
+                    <baseImage>jdk1.8</baseImage>
+                    <entryPoint>["java", "-jar","/${project.build.finalName}.jar"]</entryPoint>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                    <dockerHost>http://120.79.93.16:2375</dockerHost>
+                    <!--&lt;!&ndash;镜像名称&ndash;&gt;
+                    <imageName>120.79.93.16:5000/${project.artifactId}:${project.version}</imageName>
+                    &lt;!&ndash;依赖jdk1.8镜像，需要在docker中安装名字为：jdk1.8的jdk镜像，不需jdk8跑起来&ndash;&gt;
+                    <baseImage>jdk1.8</baseImage>
+                    &lt;!&ndash;打成jar包：jar -jar ${project.build.finalName}.jar,其中${project.build.finalName}就是<finalName>app</finalName>&ndash;&gt;
+                    <entryPoint>["java", "-jar",
+                        "/${project.build.finalName}.jar"]</entryPoint>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}
+                            </directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                    &lt;!&ndash;docker主机地址&ndash;&gt;
+                    <dockerHost>http://120.79.93.16:2375</dockerHost>-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
