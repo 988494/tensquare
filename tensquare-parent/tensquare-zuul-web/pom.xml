@@ -9,8 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tensquare-manager</artifactId>
-
+    <artifactId>tensquare-zuul-web</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -32,6 +31,11 @@
             <groupId>com.tensquare</groupId>
             <artifactId>tensquare-common</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
         </dependency>
     </dependencies>
     <build>

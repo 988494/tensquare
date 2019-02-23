@@ -32,6 +32,7 @@ public class WebFilter extends ZuulFilter {
 
     @Override
     public Object run() throws ZuulException {
+
         System.out.println("web 前端过滤器进啦了");
         //得到山下问
         RequestContext currentContext = RequestContext.getCurrentContext();

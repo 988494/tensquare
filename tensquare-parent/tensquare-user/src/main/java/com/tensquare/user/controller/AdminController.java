@@ -15,13 +15,16 @@ import com.tensquare.common.entity.Result;
 import com.tensquare.common.entity.StatusCode;
 import com.tensquare.common.util.JwtUtil;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 控制器层
  * @author Administrator
  *
  */
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/admin")
 public class AdminController {
 
@@ -33,14 +36,14 @@ public class AdminController {
 
 	//admin登陆
 	@PostMapping("/login")
-	public Result login(@RequestBody Admin admin){
+	public Result login(@RequestBody Admin admin, HttpServletRequest request, HttpServletResponse response){
 
 		Admin adminLogin = adminService.login(admin);
 		if(StringUtils.isEmpty(adminLogin)){
 			return new Result(false,StatusCode.LOGIN_EROR,"登陆失败");
 		}
 		//生成令牌
-		String token = jwtUtil.createJWT(adminLogin.getId(), adminLogin.getLoginname(), "admin");
+		String token = jwtUtil.createJWT(adminLogin.getId(), adminLogin.getUsername(), "admin");
 		HashMap<Object, Object> map = new HashMap<>();
 		map.put("token",token);
 		map.put("roles","admin");

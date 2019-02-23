@@ -27,6 +27,7 @@ public class UserJwtInterceptor implements HandlerInterceptor {
        //无论如何都放行。具体能不能操作还是在具体的操作中去判断
        //拦截器知识负责把头请求中包含的token的令牌进行一个解析校验
         System.out.println("拦截器进来了");
+        System.out.println(request.getRequestURL());
         String header = request.getHeader("Authorization");
 
 

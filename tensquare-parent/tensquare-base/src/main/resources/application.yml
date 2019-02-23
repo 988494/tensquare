@@ -1,25 +1,25 @@
-#server:
-#  port: 9001
-#spring:
-#  application:
-#    name: tensquare-base
-#  datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://120.79.93.16:3306/tensquare_base?characterEncoding=utf-8&useSSL=false
-#    username: root
-#    password: admin
-#  jpa:
-#    database: mysql
-#    show-sql: true
-#  main:
-#    allow-bean-definition-overriding: true
-#eureka:
-#  instance:
-#    #    ip-address: 表示鼠：鼠标放到微服务实例名上，右下角出现的ip地址是什么，这里写什么哪里就显示什么
-#    instance-id: ${spring.application.name}:${server.port}
-#    prefer-ip-address: true #模块之间可以跨域访问
-#  client:
-#    service-url:
-#      defaultZone: http://localhost:7001/eureka/
-#info:
-#  info: 基础微服务
+server:
+  port: 9001
+spring:
+  application:
+    name: tensquare-base
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.79.93.16:3306/tensquare_base?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: admin
+  jpa:
+    database: mysql
+    show-sql: true
+  main:
+    allow-bean-definition-overriding: true
+eureka:
+  instance:
+    #    ip-address: 表示鼠：鼠标放到微服务实例名上，右下角出现的ip地址是什么，这里写什么哪里就显示什么
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true #模块之间可以跨域访问
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+info:
+  info: 基础微服务

@@ -20,8 +20,8 @@
         <module>tensquare-sms</module>
         <module>tensquare-eureka</module>
         <module>tensquare-friend</module>
-        <module>tensquare-manager</module>
-        <module>tensquare-web</module>
+        <module>tensquare-zuul-manager</module>
+        <module>tensquare-zuul-web</module>
         <module>tensquare-config</module>
     </modules>
     <packaging>pom</packaging>

@@ -1,7 +1,7 @@
-spring:
-  cloud:
-    config:
-      name: base #base-dev.yml
-      profile: dev #base-dev.yml
-      label: master #分支，master表是为主分支
-      uri: http://127.0.0.1:12000 #地址
+#spring:
+#  cloud:
+#    config:
+#      name: base #base-dev.yml
+#      profile: dev #base-dev.yml
+#      label: master #分支，master表是为主分支
+#      uri: http://127.0.0.1:12000 #地址
